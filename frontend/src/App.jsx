@@ -49,9 +49,18 @@ function App() {
   };
 
   // --- WebSocket Setup ---
+  // --- WebSocket Setup ---
+  const isMounted = React.useRef(false);
+
   useEffect(() => {
-    connectSocket();
-    addLog("Connecting to server...");
+    // Prevent double-connection/logging in StrictMode (dev)
+    if (!socket.connected) {
+      connectSocket();
+      addLog("Connecting to server...");
+    }
+
+    // Define handlers so they can be removed by reference (though anonymous wrappers w/ socket.off(name) work too for all)
+    // For simplicity in this codebase, strict event name removal works well since we have single listeners per event type usually.
 
     socket.on('status', (data) => addLog(data.msg));
     socket.on('log', (data) => addLog(data.message)); // Display backend debug logs
@@ -73,6 +82,8 @@ function App() {
 
     // Cleanup on unmount
     return () => {
+      socket.off('status');
+      socket.off('log');
       socket.off('training_update');
       socket.off('training_complete');
       disconnectSocket();
