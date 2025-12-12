@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+*.pth
+
+# Backend Data (Exclude heavy datasets)
+data/MNIST/
+data/FashionMNIST/
+data/cifar*
+!data/.gitkeep
+
+# Node/Frontend
+node_modules/
+dist/
+.env
+
+# IDEs
+.vscode/
+.idea/
