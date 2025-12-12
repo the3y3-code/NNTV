@@ -19,6 +19,7 @@ A professional, real-time visualization tool for understanding how Neural Networ
 
 ## ✨ Features
 
+- **True Real-Time Training**: This is **not a simulation**. A real PyTorch model is being initialized, trained, and optimized live on your machine. You simply watch the internal state as it happens.
 - **Live Architecture Visualization**: Watch signals propagate through the network with dynamic, multi-colored particle effects.
 - **Deep Insight Heatmaps**: Real-time heatmaps of weight matrices allowing you to see the "brain" structure forming.
 - **Interactive Training Control**:
