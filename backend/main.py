@@ -4,6 +4,12 @@ eventlet.monkey_patch()
 
 from flask import Flask
 from flask_cors import CORS
+import sys
+import os
+
+# Add the project root directory to the Python path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from backend.extensions import socketio
 
 app = Flask(__name__)
